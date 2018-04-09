@@ -18,3 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource('tasks', 'Api\TasksController');
+Route::resource('projects', 'Api\ProjectsController');
+Route::resource('dailies', 'Api\DailiesController');
+Route::resource('members', 'Api\MembersController');
