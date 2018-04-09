@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectMember extends Migration
+class CreateProjectMemberTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,8 +15,8 @@ class CreateProjectMember extends Migration
     {
         Schema::create('project_member', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('project_id');
-            $table->string('member_id');
+            $table->integer('project_id');
+            $table->integer('member_id');
             $table->timestamps();
         });
     }

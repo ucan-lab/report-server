@@ -16,7 +16,7 @@ class CreateTasksTable extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_id')->comment('プロジェクトID');
-            $table->integer('type')->comment('種別');
+            $table->integer('type')->comment('種別 0: 通常 1: 問題');
             $table->string('title')->comment('タイトル');
             $table->text('content')->nullable()->comment('内容');
             $table->date('due_date')->nullable()->comment('期限');

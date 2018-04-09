@@ -15,6 +15,7 @@ class CreateDailiesTable extends Migration
     {
         Schema::create('dailies', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('member_id');
             $table->date('work_day')->comment('作業日');
             $table->dateTime('work_start_at')->comment('始業時間');
             $table->dateTime('work_end_at')->comment('終業時間');
