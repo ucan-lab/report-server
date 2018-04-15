@@ -10,8 +10,7 @@ $ docker-compose up -d
 $ docker-compose run web composer install
 $ cp -a .env.example .env
 $ docker-compose run web php artisan key:generate
-$ docker-compose run web php artisan migrate
-$ docker-compose run web php artisan db:seed
+$ docker-compose run web php artisan migrate:refresh --seed
 ```
 
 ### コンテナログイン
