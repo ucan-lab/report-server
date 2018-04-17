@@ -27,6 +27,11 @@ class Member extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function accounts()
+    {
+        return $this->hasMany(LinkedSocialAccount::class);
+    }
+
     public function dailies()
     {
         return $this->hasMany(Daily::class);
