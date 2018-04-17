@@ -13,23 +13,23 @@ class SocialAccountService
                    ->first();
 
         if ($account) {
-            return $account->user;
+            return $account->member;
         } else {
-            $user = Member::where('email', $providerUser->getEmail())->first();
+            $member = Member::where('email', $providerUser->getEmail())->first();
 
-            if (! $user) {
-                $user = Member::create([  
+            if (! $member) {
+                $member = Member::create([  
                     'email' => $providerUser->getEmail(),
                     'name'  => $providerUser->getName(),
                 ]);
             }
 
-            $user->accounts()->create([
+            $member->accounts()->create([
                 'provider_id'   => $providerUser->getId(),
                 'provider_name' => $provider,
             ]);
 
-            return $user;
+            return $member;
         }
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SocialAccountService;
 use Socialite;
+use Exception;
 
 class SocialAccountController extends Controller
 {
@@ -27,17 +28,17 @@ class SocialAccountController extends Controller
     public function handleProviderCallback(SocialAccountService $accountService, $provider)
     {
         try {
-            $user = Socialite::with($provider)->user();
-        } catch (\Exception $e) {
+            $member = Socialite::with($provider)->user();
+        } catch (Exception $e) {
             return redirect('/login');
         }
 
-        $authUser = $accountService->findOrCreate(
-            $user,
+        $authMember = $accountService->findOrCreate(
+            $member,
             $provider
         );
 
-        auth()->login($authUser, true);
+        auth()->login($authMember, true);
 
         return redirect()->to('/home');
     }
